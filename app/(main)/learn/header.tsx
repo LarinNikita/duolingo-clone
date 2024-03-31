@@ -1,24 +1,13 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
-import { getUserProgress } from "@/db/queries";
-
 import { Button } from "@/components/ui/button";
-import { redirect } from "next/navigation";
 
 type Props = {
   title: string;
 };
 
-export const Header = async ({ title }: Props) => {
-  const userProgressData = getUserProgress();
-
-  const [userProgress] = await Promise.all([userProgressData]);
-
-  if (!userProgress || !userProgress.activeCourse) {
-    redirect("/courses");
-  }
-
+export const Header = ({ title }: Props) => {
   return (
     <div className="sticky top-0 mb-5 flex items-center justify-between border-b-2 bg-white pb-3 text-neutral-400 lg:z-50 lg:mt-[-28px] lg:pt-[28px]">
       <Link href="/courses">
