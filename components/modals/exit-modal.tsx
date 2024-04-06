@@ -13,10 +13,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { close } from "fs";
 
 export const ExitModal = () => {
   const router = useRouter();
