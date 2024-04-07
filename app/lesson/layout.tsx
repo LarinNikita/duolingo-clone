@@ -1,8 +1,8 @@
-interface LessonLayoutProps {
+type Props = {
   children: React.ReactNode;
-}
+};
 
-const LessonLayout = ({ children }: LessonLayoutProps) => {
+const LessonLayout = ({ children }: Props) => {
   return (
     <div className="flex h-full flex-col">
       <div className="flex size-full flex-col">{children}</div>

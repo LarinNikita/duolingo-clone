@@ -1,6 +1,6 @@
-import { auth } from "@clerk/nextjs";
-import { eq } from "drizzle-orm";
 import { cache } from "react";
+import { eq } from "drizzle-orm";
+import { auth } from "@clerk/nextjs";
 
 import db from "@/db/drizzle";
 import {
@@ -9,7 +9,7 @@ import {
   lessons,
   units,
   userProgress,
-} from "./schema";
+} from "@/db/schema";
 
 export const getUserProgress = cache(async () => {
   const { userId } = await auth();
@@ -36,6 +36,7 @@ export const getUnits = cache(async () => {
     return [];
   }
 
+  // TODO: Confirm whether order is needed
   const data = await db.query.units.findMany({
     where: eq(units.courseId, userProgress.activeCourseId),
     with: {
@@ -122,6 +123,7 @@ export const getCourseProgress = cache(async () => {
   const firstUncompletedLesson = unitsInActiveCourse
     .flatMap((unit) => unit.lessons)
     .find((lesson) => {
+      // TODO: If something does not work, check the last if clause
       return lesson.challenges.some((challenge) => {
         return (
           !challenge.challengeProgress ||
@@ -174,6 +176,7 @@ export const getLesson = cache(async (id?: number) => {
   }
 
   const normalizedChallenges = data.challenges.map((challenge) => {
+    // TODO: If something does not work, check the last if clause
     const completed =
       challenge.challengeProgress &&
       challenge.challengeProgress.length > 0 &&

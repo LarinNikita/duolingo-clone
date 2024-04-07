@@ -1,6 +1,5 @@
-import { challengeOptions, challenges } from "@/db/schema";
-
 import { cn } from "@/lib/utils";
+import { challengeOptions, challenges } from "@/db/schema";
 
 import { Card } from "./card";
 
@@ -13,7 +12,7 @@ type Props = {
   type: (typeof challenges.$inferSelect)["type"];
 };
 
-const Challenge = ({
+export const Challenge = ({
   options,
   onSelect,
   status,
@@ -48,5 +47,3 @@ const Challenge = ({
     </div>
   );
 };
-
-export default Challenge;

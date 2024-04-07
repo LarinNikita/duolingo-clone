@@ -136,21 +136,18 @@ const main = async () => {
     await db.insert(schema.challengeOptions).values([
       {
         challengeId: 2, // "the man"?
-        imageSrc: "/man.svg",
         correct: true,
         text: "el hombre",
         audioSrc: "/es_man.mp3",
       },
       {
         challengeId: 2,
-        imageSrc: "/woman.svg",
         correct: false,
         text: "la mujer",
         audioSrc: "/es_woman.mp3",
       },
       {
         challengeId: 2,
-        imageSrc: "/robot.svg",
         correct: false,
         text: "el robot",
         audioSrc: "/es_robot.mp3",
@@ -178,30 +175,6 @@ const main = async () => {
         correct: true,
         text: "el robot",
         audioSrc: "/es_robot.mp3",
-      },
-    ]);
-
-    await db.insert(schema.challenges).values([
-      {
-        id: 4,
-        lessonId: 2, // Verbs
-        type: "SELECT",
-        order: 1,
-        question: 'Which one of these is the "the man"?',
-      },
-      {
-        id: 5,
-        lessonId: 2, // Verbs
-        type: "ASSIST",
-        order: 2,
-        question: '"the man"',
-      },
-      {
-        id: 6,
-        lessonId: 2, // Verbs
-        type: "SELECT",
-        order: 3,
-        question: 'Which one of these is the "the robot"?',
       },
     ]);
     console.log("Seeding finished");
