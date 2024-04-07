@@ -1,7 +1,8 @@
 import Image from "next/image";
+import { useCallback } from "react";
+import { useAudio, useKey } from "react-use";
 
 import { cn } from "@/lib/utils";
-
 import { challenges } from "@/db/schema";
 
 type Props = {
@@ -25,21 +26,39 @@ export const Card = ({
   shortcut,
   selected,
   onClick,
-  disabled,
   status,
+  disabled,
   type,
 }: Props) => {
+  // eslint-disable-next-line no-unused-vars
+  const [audio, _, controls] = useAudio({ src: audioSrc || "" });
+
+  const handleClick = useCallback(() => {
+    if (disabled) return;
+
+    controls.play();
+    onClick();
+  }, [disabled, onClick, controls]);
+
+  useKey(shortcut, handleClick, {}, [handleClick]);
+
   return (
     <div
-      onClick={() => {}}
+      onClick={handleClick}
       className={cn(
         "h-full cursor-pointer rounded-xl border-2 border-b-4 p-4 hover:bg-black/5 active:border-b-2 lg:p-6",
         selected && "border-sky-300 bg-sky-100 hover:bg-sky-100",
-        selected && "border-green-300 bg-green-100 hover:bg-green-100",
+        selected &&
+          status === "correct" &&
+          "border-green-300 bg-green-100 hover:bg-green-100",
+        selected &&
+          status === "wrong" &&
+          "border-rose-300 bg-rose-100 hover:bg-rose-100",
         disabled && "pointer-events-none hover:bg-white",
         type === "ASSIST" && "w-full lg:p-3",
       )}
     >
+      {audio}
       {imageSrc && (
         <div className="relative mb-4 aspect-square max-h-[80px] w-full lg:max-h-[150px]">
           <Image src={imageSrc} fill alt={text} />
@@ -68,8 +87,8 @@ export const Card = ({
             selected && "border-sky-300 text-sky-500",
             selected &&
               status === "correct" &&
-              "border-green-300 text-green-500",
-            selected && status === "wrong" && "border-green-300 text-rose-500",
+              "border-green-500 text-green-500",
+            selected && status === "wrong" && "border-rose-500 text-rose-500",
           )}
         >
           {shortcut}
