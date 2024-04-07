@@ -4,7 +4,7 @@ type Props = {
   question: string;
 };
 
-const QuestionBubble = ({ question }: Props) => {
+export const QuestionBubble = ({ question }: Props) => {
   return (
     <div className="mb-6 flex items-center gap-x-4">
       <Image
@@ -28,5 +28,3 @@ const QuestionBubble = ({ question }: Props) => {
     </div>
   );
 };
-
-export default QuestionBubble;

@@ -30,7 +30,6 @@ export const Card = ({
   disabled,
   type,
 }: Props) => {
-  // eslint-disable-next-line no-unused-vars
   const [audio, _, controls] = useAudio({ src: audioSrc || "" });
 
   const handleClick = useCallback(() => {
@@ -83,7 +82,7 @@ export const Card = ({
         </p>
         <div
           className={cn(
-            "flex size-[20px] items-center justify-center rounded-lg border-2 text-xs font-semibold text-neutral-400 lg:size-[30px] lg:text-[15px]",
+            "flex h-[20px] w-[20px] items-center justify-center rounded-lg border-2 text-xs font-semibold text-neutral-400 lg:h-[30px] lg:w-[30px] lg:text-[15px]",
             selected && "border-sky-300 text-sky-500",
             selected &&
               status === "correct" &&

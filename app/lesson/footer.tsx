@@ -1,25 +1,25 @@
-import { CheckCircle, XCircle } from "lucide-react";
 import { useKey, useMedia } from "react-use";
+import { CheckCircle, XCircle } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 
 type Props = {
-  disabled?: boolean;
-  status: "correct" | "wrong" | "none" | "completed";
   onCheck: () => void;
+  status: "correct" | "wrong" | "none" | "completed";
+  disabled?: boolean;
   lessonId?: boolean;
 };
 
-export const Footer = ({ disabled, status, onCheck, lessonId }: Props) => {
+export const Footer = ({ onCheck, status, disabled, lessonId }: Props) => {
   useKey("Enter", onCheck, {}, [onCheck]);
-  const isMobile = useMedia("(max-width:1024px)");
+  const isMobile = useMedia("(max-width: 1024px)");
 
   return (
     <footer
       className={cn(
-        "h-[100px] border-t-2 lg:h-[140px]",
+        "lg:-h[140px] h-[100px] border-t-2",
         status === "correct" && "border-transparent bg-green-100",
         status === "wrong" && "border-transparent bg-rose-100",
       )}
