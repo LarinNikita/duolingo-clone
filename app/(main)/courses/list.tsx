@@ -2,12 +2,12 @@
 
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 import { courses, userProgress } from "@/db/schema";
 import { upsertUserProgress } from "@/actions/user-progress";
 
 import { Card } from "./card";
-import { toast } from "sonner";
 
 type Props = {
   courses: (typeof courses.$inferSelect)[];
