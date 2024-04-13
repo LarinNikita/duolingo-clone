@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import { Toaster } from "@/components/ui/sonner";
 import { ExitModal } from "@/components/modals/exit-modal";
 import { HeartsModal } from "@/components/modals/hearts-modal";
+import { PracticeModal } from "@/components/modals/practice-modal";
 
 import "./globals.css";
 
@@ -29,6 +30,7 @@ export default function RootLayout({
           <Toaster />
           <ExitModal />
           <HeartsModal />
+          <PracticeModal />
           {children}
         </body>
       </html>
