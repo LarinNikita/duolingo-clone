@@ -185,7 +185,11 @@ export const Quiz = ({
           </h1>
           <div className="flex w-full items-center gap-x-4">
             <ResultCard variant="points" value={challenges.length * 10} />
-            <ResultCard variant="hearts" value={hearts} />
+            <ResultCard
+              variant="hearts"
+              value={hearts}
+              hasActiveSubscription={!!userSubscription?.isActive}
+            />
           </div>
         </div>
         <Footer
