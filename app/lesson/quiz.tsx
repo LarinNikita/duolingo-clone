@@ -53,7 +53,9 @@ export const Quiz = ({
   const { width, height } = useWindowSize();
   const router = useRouter();
 
+  // eslint-disable-next-line no-unused-vars
   const [correctAudio, _c, correctControls] = useAudio({ src: "/correct.wav" });
+  // eslint-disable-next-line no-unused-vars
   const [incorrectAudio, _i, incorrectControls] = useAudio({
     src: "/incorrect.wav",
   });

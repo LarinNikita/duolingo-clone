@@ -1,4 +1,5 @@
 type Props = {
+  // eslint-disable-next-line no-undef
   children: React.ReactNode;
 };
 

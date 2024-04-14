@@ -2,6 +2,7 @@ import { Footer } from "./footer";
 import { Header } from "./header";
 
 interface MarketingLayoutProps {
+  // eslint-disable-next-line no-undef
   children: React.ReactNode;
 }
 
